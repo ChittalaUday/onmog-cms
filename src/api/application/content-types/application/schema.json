@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applications",
+  "info": {
+    "singularName": "application",
+    "pluralName": "applications",
+    "displayName": "Application"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "cover_letter": {
+      "type": "richtext"
+    },
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job",
+      "inversedBy": "applications"
+    },
+    "application_status": {
+      "type": "enumeration",
+      "default": "Applied",
+      "enum": [
+        "Applied",
+        "Screening",
+        "Interview",
+        "Selected",
+        "Rejected"
+      ]
+    },
+    "applied_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "notes": {
+      "type": "richtext"
+    }
+  }
+}

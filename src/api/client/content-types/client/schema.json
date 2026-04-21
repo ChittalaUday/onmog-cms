@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "singularName": "client",
+    "pluralName": "clients",
+    "displayName": "Client"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "industry": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "metricLabel": {
+      "type": "string"
+    },
+    "metricValue": {
+      "type": "string"
+    },
+    "isFeatured": {
+      "type": "boolean"
+    },
+    "website": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "default": "Users  ",
+      "enum": [
+        "TrendingUp  ",
+        "BarChart  ",
+        "Briefcase  ",
+        "PieChart  ",
+        "Target  ",
+        "LineChart  ",
+        "Rocket  ",
+        "Zap  ",
+        "Users  ",
+        "UserCheck  ",
+        "UserPlus  ",
+        "Search  ",
+        "Handshake  ",
+        "Globe  ",
+        "UserGroup  ",
+        "Network  ",
+        "Laptop  ",
+        "Cloud  ",
+        "Code  ",
+        "Database  ",
+        "Cpu  ",
+        "Monitor  ",
+        "Settings  ",
+        "Layers  ",
+        "Train  ",
+        "Compass  ",
+        "MapPin  ",
+        "Truck  ",
+        "Shield  ",
+        "Clock  ",
+        "Construction  ",
+        "HardHat  ",
+        "MessageSquare  ",
+        "Phone  ",
+        "Mail  ",
+        "CheckCircle  ",
+        "Award  ",
+        "Star  ",
+        "Info  ",
+        "HelpCircle"
+      ]
+    }
+  }
+}

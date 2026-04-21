@@ -474,7 +474,7 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
       ['Applied', 'Screening', 'Interview', 'Selected', 'Rejected']
     > &
       Schema.Attribute.DefaultTo<'Applied'>;
-    applied_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    applied_at: Schema.Attribute.DateTime;
     cover_letter: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -598,6 +598,86 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiClientClient extends Struct.CollectionTypeSchema {
+  collectionName: 'clients';
+  info: {
+    displayName: 'Client';
+    pluralName: 'clients';
+    singularName: 'client';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Enumeration<
+      [
+        'TrendingUp  ',
+        'BarChart  ',
+        'Briefcase  ',
+        'PieChart  ',
+        'Target  ',
+        'LineChart  ',
+        'Rocket  ',
+        'Zap  ',
+        'Users  ',
+        'UserCheck  ',
+        'UserPlus  ',
+        'Search  ',
+        'Handshake  ',
+        'Globe  ',
+        'UserGroup  ',
+        'Network  ',
+        'Laptop  ',
+        'Cloud  ',
+        'Code  ',
+        'Database  ',
+        'Cpu  ',
+        'Monitor  ',
+        'Settings  ',
+        'Layers  ',
+        'Train  ',
+        'Compass  ',
+        'MapPin  ',
+        'Truck  ',
+        'Shield  ',
+        'Clock  ',
+        'Construction  ',
+        'HardHat  ',
+        'MessageSquare  ',
+        'Phone  ',
+        'Mail  ',
+        'CheckCircle  ',
+        'Award  ',
+        'Star  ',
+        'Info  ',
+        'HelpCircle',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'Users  '>;
+    industry: Schema.Attribute.String;
+    isFeatured: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client.client'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    metricLabel: Schema.Attribute.String;
+    metricValue: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -791,6 +871,32 @@ export interface ApiSkillSkill extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStatStat extends Struct.CollectionTypeSchema {
+  collectionName: 'stats';
+  info: {
+    displayName: 'stat';
+    pluralName: 'stats';
+    singularName: 'stat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::stat.stat'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    stat_name: Schema.Attribute.String & Schema.Attribute.Required;
+    stat_number: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1313,12 +1419,14 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::client.client': ApiClientClient;
       'api::department.department': ApiDepartmentDepartment;
       'api::global.global': ApiGlobalGlobal;
       'api::job-type.job-type': ApiJobTypeJobType;
       'api::job.job': ApiJobJob;
       'api::location.location': ApiLocationLocation;
       'api::skill.skill': ApiSkillSkill;
+      'api::stat.stat': ApiStatStat;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
